@@ -63,3 +63,4 @@ Based on the observed execution times, it can be concluded that the time complex
 - `magic_square_result.txt`: Output file containing recorded execution times for different sizes of the magic square.
 
 Feel free to explore and analyze the provided code and results further. If you have any questions or suggestions, please don't hesitate to reach out.
+
