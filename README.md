@@ -1,65 +1,72 @@
-**README: Analysis and Design of Magic Square Algorithm**
+**README: Analysis and Design of Merging Sorted List Algorithm**
 
 ### Overview
-This repository explores the Magic Square problem, which involves arranging numbers in a square grid such that the sum of numbers in each row, column, and diagonal is the same. The algorithm aims to generate such magic squares of varying orders.
+This repository focuses on the Merging Sorted List problem, which involves merging two sorted lists into a single sorted list. The algorithm efficiently combines two lists of different sizes while maintaining the order.
 
-### Magic Square Problem
-A magic square of order n is an arrangement of n^2 numbers in a square grid, where the sum of numbers in each row, column, and diagonal is the same. The integers from 1 to n^2 are usually used to fill the square.
+### Merging Sorted List Problem
+Given two lists `a` and `b` of sizes `m` and `n` respectively, both sorted in non-decreasing order, the goal is to generate a single sorted list containing all the elements from both lists.
 
 ### Algorithm
-The algorithm for generating a magic square can be described as follows:
+The algorithm for merging two sorted lists can be summarized as follows:
 ```cpp
-MagicSquare(n){
-    i = n/2;
-    j = n-1;
-    for(int k=1 to n*n){
-        if(a[i][j]==0){
-            a[i][j]=k;
+Merging(a, b, m, n){
+    i = 0;
+    j = 0;
+    k = 0;
+    while(i < m && j < n){
+        if(a[i] < b[j]){
+            c[k] = a[i];
             k++;
-            i--;
+            i++;
+        }
+        else{
+            c[k] = b[j];
+            k++;
             j++;
         }
-        if(i<0 && j<n)
-            i=n-1;
-        else if(i>=0 && j==n)
-            j = 0;
-        else if(i<0 && j==n){
-            i = 0;
-            j = n-2;
-        }
-        if(a[i][j] !=0){
-            i++;
-            j = j-2;
-        }
-   }
+    }
+    // Copy remaining elements from a and b, if any
+    while(i < m){
+        c[k] = a[i];
+        k++;
+        i++;
+    }
+    while(j < n){
+        c[k] = b[j];
+        k++;
+        j++;
+    }
+    return c;
 }
 ```
-Where `n` is the order of the magic square, and `a` is the square grid.
+Where `a` and `b` are the input lists, `m` and `n` are their respective sizes, and `c` is the merged list.
 
 ### Source Code
-The provided source code (`magic_square.cpp`) contains the implementation of the Magic Square algorithm along with code for measuring the execution time for different sizes of the magic square.
+The provided source code (`merging_sorted_list.cpp`) contains the implementation of the Merging Sorted List algorithm and measures the execution time for merging lists of varying sizes.
 
 ### Execution
 To execute the code:
 1. Compile the source code.
 2. Run the compiled executable.
-3. The program will generate magic squares for various sizes and measure the average execution time.
+3. The program will merge sorted lists of different sizes and measure the average execution time.
 
 ### Output
-The program output provides insights into the execution time for different sizes of the magic square. Here's a sample output:
+The program output displays the average time taken for merging sorted lists of different sizes. Here's a sample output:
 ```
-avg time taken for size of array = 3 is 0 microseconds
-avg time taken for size of array = 13 is 0 microseconds
-avg time taken for size of array = 23 is 0 microseconds
+avg time taken for size of array = 10 is 0 microseconds
+avg time taken for size of array = 100 is 0 microseconds
+avg time taken for size of array = 1000 is 0 microseconds
 ...
-avg time taken for size of array = 693 is 6478 microseconds
+avg time taken for size of array = 70000 is 623 microseconds
+avg time taken for size of array = 75000 is 1205 microseconds
+avg time taken for size of array = 90000 is 1671 microseconds
 ```
 
 ### Conclusion
-Based on the observed execution times, it can be concluded that the time complexity of the Magic Square algorithm is O(n^2), where n is the order of the magic square. This quadratic time complexity arises from the nested loops used to fill the square grid.
+Based on the observed execution times, it can be concluded that the time complexity of the Merging Sorted List algorithm is O(n), where n is the size of the merged list. This linear time complexity arises from the algorithm's simple comparison-based approach.
 
 ### Files
-- `magic_square.cpp`: Contains the source code for the algorithm implementation and execution time analysis.
-- `magic_square_result.txt`: Output file containing recorded execution times for different sizes of the magic square.
+- `merging_sorted_list.cpp`: Contains the source code for the algorithm implementation and execution time analysis.
+- `merging.txt`: Output file containing recorded execution times for merging lists of different sizes.
 
 Feel free to explore and analyze the provided code and results further. If you have any questions or suggestions, please don't hesitate to reach out.
